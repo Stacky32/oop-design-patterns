@@ -1,6 +1,6 @@
 using System;
 
-namespace Library.GangOfFour.Behavioural.Composite;
+namespace Library.GangOfFour.Structural.Composite;
 
 public class Shape : IComparable<Shape>
 {

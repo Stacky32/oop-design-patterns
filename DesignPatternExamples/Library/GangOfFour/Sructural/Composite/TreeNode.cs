@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Library.GangOfFour.Behavioural.Composite;
+namespace Library.GangOfFour.Structural.Composite;
 
 public sealed class TreeNode<T> where T : IComparable<T>
 {
