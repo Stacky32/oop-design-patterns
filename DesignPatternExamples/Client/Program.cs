@@ -13,9 +13,11 @@ using Library.GangOfFour.Creational.FactoryMethod.Documents;
 using Library.GangOfFour.Creational.Prototype;
 using Library.GangOfFour.Creational.Singleton;
 using Library.GangOfFour.Structural.Adapter;
+using Library.GangOfFour.Structural.Bridge;
 using Library.GangOfFour.Structural.Composite;
 using Library.GangOfFour.Structural.Decorator;
 using Library.GangOfFour.Structural.Facade;
+using Library.GangOfFour.Structural.Flyweight;
 using Library.GangOfFour.Structural.Proxy;
 
 namespace Client;
@@ -30,11 +32,13 @@ public class Program
         TestPrototypePattern();
         TestSingletonPattern();
 
-        TestCompositePattern();
-        TestProxyPattern();
-        TestFacadePattern();
-        TestDecoratorPattern();
         TestAdapterPatten();
+        TestBridgePattern();
+        TestCompositePattern();
+        TestDecoratorPattern();
+        TestFacadePattern();
+        TestFlyweightPattern();
+        TestProxyPattern();
 
         TestStrategyPattern();
         TestObserverPattern();
@@ -334,5 +338,32 @@ public class Program
         sally.Send("Julia", "lol look at this");
         julia.Send("Viktor", "you vic you here?");
         steve.Send("Julia", "He's not in this group Julia");
+    }
+
+    private static void TestBridgePattern()
+    {
+        var customers = new Customers(new CustomersData("Detroit"));
+
+        customers.Show();
+        customers.Next();
+        customers.Show();
+        customers.Previous();
+        customers.Add("Mike");
+        customers.Show();
+        customers.ShowAll();
+    }
+
+    private static void TestFlyweightPattern()
+    {
+        Console.WriteLine("Flyweight pattern");
+        var input = "ABBZAZBBZ";
+        var factory = new CharacterFactory();
+        int pointSize = 12;
+
+        foreach (var c in input)
+        {
+            var character = factory.GetCharacter(c);
+            character?.Display(++pointSize);
+        }
     }
 }
