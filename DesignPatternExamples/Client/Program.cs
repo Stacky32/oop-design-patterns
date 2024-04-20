@@ -1,5 +1,7 @@
-﻿using Library.GangOfFour.Behavioural.Iterator;
+﻿using Library.GangOfFour.Behavioural.Command;
+using Library.GangOfFour.Behavioural.Iterator;
 using Library.GangOfFour.Behavioural.Observer;
+using Library.GangOfFour.Behavioural.State;
 using Library.GangOfFour.Behavioural.Strategy;
 using Library.GangOfFour.Behavioural.TemplateMethod;
 using Library.GangOfFour.Creational.AbstractFactory;
@@ -37,6 +39,8 @@ public class Program
         TestObserverPattern();
         TestIteratorPattern();
         TestTemplateMethodPattern();
+        TestCommandPattern();
+        TestStatePattern();
 
         Console.ReadKey();
     }
@@ -280,5 +284,33 @@ public class Program
         var ethanol = new CompoundAdapter(Chemical.Ethanol);
         ethanol.Analyse();
         display(ethanol);
+    }
+
+    private static void TestCommandPattern()
+    {
+        var user = new User();
+
+        user.Compute('+', 100);
+        user.Compute('*', 2);
+        user.Compute('-', 50);
+        user.Compute('/', 2);
+
+        user.Undo(4);
+        user.Redo(3);
+    }
+
+    private static void TestStatePattern()
+    {
+        var account = new Account("Jim Stevens");
+
+        account.Deposit(500.0);
+        account.Deposit(600.0);
+        account.Withdraw(200.0);
+        account.PayInterest();
+        account.Withdraw(2000);
+        account.Withdraw(100);
+        account.Deposit(1200);
+        account.Deposit(2000000);
+        account.PayInterest();
     }
 }
