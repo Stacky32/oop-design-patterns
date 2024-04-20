@@ -1,5 +1,6 @@
 ﻿using Library.GangOfFour.Behavioural.Command;
 using Library.GangOfFour.Behavioural.Iterator;
+using Library.GangOfFour.Behavioural.Mediator;
 using Library.GangOfFour.Behavioural.Observer;
 using Library.GangOfFour.Behavioural.State;
 using Library.GangOfFour.Behavioural.Strategy;
@@ -41,6 +42,7 @@ public class Program
         TestTemplateMethodPattern();
         TestCommandPattern();
         TestStatePattern();
+        TestMediatorPattern();
 
         Console.ReadKey();
     }
@@ -312,5 +314,25 @@ public class Program
         account.Deposit(1200);
         account.Deposit(2000000);
         account.PayInterest();
+    }
+
+    public static void TestMediatorPattern()
+    {
+        var jim = new Moderator("Jim");
+        var sam = new Moderator("Sam");
+        var steve = new Member("Steve");
+        var sally = new Member("Sally");
+        var julia = new Member("Julia");
+
+        var chatroom = new Chatroom();
+        chatroom.RegisterRange([jim, sam, steve, sally, julia]);
+        chatroom.Register(jim);
+        
+        jim.Send("Sam", "you smell");
+        sam.Send("Jim", "you suck");
+        jim.Send("Sam", "beat it, chump");
+        sally.Send("Julia", "lol look at this");
+        julia.Send("Viktor", "you vic you here?");
+        steve.Send("Julia", "He's not in this group Julia");
     }
 }
