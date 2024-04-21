@@ -1,4 +1,5 @@
-﻿using Library.GangOfFour.Behavioural.Command;
+﻿using Library.GangOfFour.Behavioural.ChainOfResponsibility;
+using Library.GangOfFour.Behavioural.Command;
 using Library.GangOfFour.Behavioural.Iterator;
 using Library.GangOfFour.Behavioural.Mediator;
 using Library.GangOfFour.Behavioural.Observer;
@@ -47,6 +48,7 @@ public class Program
         TestCommandPattern();
         TestStatePattern();
         TestMediatorPattern();
+        TestChainOfCommandPattern();
 
         Console.ReadKey();
     }
@@ -365,5 +367,25 @@ public class Program
             var character = factory.GetCharacter(c);
             character?.Display(++pointSize);
         }
+    }
+
+    private static void TestChainOfCommandPattern()
+    {
+        var larry = new Director();
+        var sally = new VicePresident();
+        var steve = new President();
+
+        larry.Successor = sally;
+        sally.Successor = steve;
+
+        var purchaseRequests = new List<Purchase>
+        {
+            new() { Number = 1023, Amount = 350, Purpose = "Fun" },
+            new() { Number = 1024, Amount = 11000, Purpose = "Dinner" },
+            new() { Number = 1025, Amount = 26000, Purpose = "Flights" },
+            new() { Number = 1026, Amount = 101000, Purpose = "Holiday home"},
+        };
+
+        purchaseRequests.ForEach(p => larry.ProcessRequest(p));
     }
 }
