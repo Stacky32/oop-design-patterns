@@ -2,6 +2,7 @@
 using Library.GangOfFour.Behavioural.Command;
 using Library.GangOfFour.Behavioural.Iterator;
 using Library.GangOfFour.Behavioural.Mediator;
+using Library.GangOfFour.Behavioural.Memento;
 using Library.GangOfFour.Behavioural.Observer;
 using Library.GangOfFour.Behavioural.State;
 using Library.GangOfFour.Behavioural.Strategy;
@@ -49,6 +50,7 @@ public class Program
         TestStatePattern();
         TestMediatorPattern();
         TestChainOfCommandPattern();
+        TestMementoPattern();
 
         Console.ReadKey();
     }
@@ -387,5 +389,26 @@ public class Program
         };
 
         purchaseRequests.ForEach(p => larry.ProcessRequest(p));
+    }
+
+    private static void TestMementoPattern()
+    {
+        var steve = new SalesProspect
+        {
+            Name = "Steve Mate",
+            Email = "steve.yeah.mate@mail.com",
+            Budget = 32,
+        };
+
+        var m = new ProspectMemory(steve.SaveMemento());
+
+        Console.WriteLine(steve);
+
+        steve.Email = "stevie-boi@mail.com";
+        steve.Budget = 29;
+        Console.WriteLine(steve);
+
+        steve.RestoreMemento(m.Memento);
+        Console.WriteLine(steve);
     }
 }
