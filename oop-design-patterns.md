@@ -40,9 +40,28 @@ In practice this means:
 
 ## Interface Segregation Principle
 
+> A client should not be forced to implement interaces they do not use. 
+
+This means that instead of having a single large interface, we should prefer having several smaller
+interfaces containing the properties and methods relating a an atomic unit of functionality.
+
+For instance, a tech lead is both a programmer and a manager, so the TeamLead class could implement 
+the IProgrammer and IManager interfaces rather than a single large ITeamLead which includes all 
+responsibilities.
 
 ## Dependency Inversion Principle
 
+High levels modules should not depend on low levels modules directly, instead both should rely on 
+abstractions such as an abstract class or interface.
+
+For instance, a logging class should depend on an ILogWriter interface, rather than say a 
+TextLogWriter class - the logging class does not need to know or care about how the logs are persisted; 
+whether they are written to a text file, standard out or a database, instead they only need to know
+the interface for persisting logs.
+
+Another way to phrase this is that a class should not be responsible for resolving its own concrete
+dependencies. Instead the dependencies should be passed to the class, for example through a constructor.
+One way to achieve this is through using a dependency injection framework.
 
 
 ## Design Patterns

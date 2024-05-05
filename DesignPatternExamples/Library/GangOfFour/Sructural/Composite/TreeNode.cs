@@ -5,6 +5,12 @@ namespace Library.GangOfFour.Structural.Composite;
 
 public sealed class TreeNode<T> where T : IComparable<T>
 {
+    public TreeNode<T>? Parent { get; set; } = null;
+
+    public T Node { get; set; } = default!;
+
+    public List<TreeNode<T>> Children { get; set; } = [];
+
     public TreeNode(T value)
     {
         Node = value;
@@ -40,10 +46,4 @@ public sealed class TreeNode<T> where T : IComparable<T>
         Console.WriteLine(line + " " + node.Node);
         node.Children.ForEach(n => Display(n, indentation + 1));
     }
-
-    public TreeNode<T>? Parent { get; set; } = null;
-
-    public T Node { get; set; } = default!;
-
-    public List<TreeNode<T>> Children { get; set; } = [];
 }
