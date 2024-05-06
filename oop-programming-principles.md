@@ -1,4 +1,38 @@
 # OOP Design Patterns and principals
+
+## Service lifetimes
+
+In .NET, services can be registered with the dependency injection container with lifetimes Singleton, Scoped or Transient. The DI container
+deals with creating and disposing of instances automatically based on the service lifetime used when registering the service.
+
+- Do *NOT* resolve a scoped service from a singleton.
+- You *MAY* resolve a singleton from a scoped or transient service.
+- You *MAY* resolve a scoped service from another scoped or transient service.
+- In summary, resolving a service from another service with a longer lifetime is not a good idea.
+
+### Singleton
+
+- Only one instance of the service is created for the entire application lifetime and is reused each time the service is required.
+- Can be memory efficient since onle one instance is ever created.
+- However, memory leaks in singleton services will lead to gradually increasing memory usage.
+
+Singleton lifetime is suitable for services such as a logger or email service. Singleton should not be used when there is a lot of internal
+state as the instance is shared between requests.
+
+### Scoped
+
+- A new instance is created for each HTTP request. The same instance is provided for the entire scope of the request.
+
+Scoped lifetime is suitable for when state needs to be persisted within the scope of the request.
+
+### Transient
+
+- A new instance is created every time the service is required. Each instance is independent.
+- Since many instances may be created, transient lifetime can be more memory and resource intensive, thus degrading performance.
+
+Transient lifetime is suitable for lightweight services with little or no internal state. Its use may also be considered where it is
+essential to maintain separate instances, such as in multithreaded applications.
+
 ## SOLID Principals
 
 The SOLID principles are:
