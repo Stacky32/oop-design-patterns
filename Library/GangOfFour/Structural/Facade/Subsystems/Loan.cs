@@ -1,4 +1,4 @@
-namespace Library.GangOfFour.Structural.Facade;
+namespace Library.GangOfFour.Structural.Facade.Subsystems;
 
 public class Loan
 {

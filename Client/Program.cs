@@ -19,6 +19,7 @@ using Library.GangOfFour.Structural.Bridge;
 using Library.GangOfFour.Structural.Composite;
 using Library.GangOfFour.Structural.Decorator;
 using Library.GangOfFour.Structural.Facade;
+using Library.GangOfFour.Structural.Facade.Subsystems;
 using Library.GangOfFour.Structural.Flyweight;
 using Library.GangOfFour.Structural.Proxy;
 
