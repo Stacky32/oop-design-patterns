@@ -33,7 +33,7 @@ Scoped lifetime is suitable for when state needs to be persisted within the scop
 Transient lifetime is suitable for lightweight services with little or no internal state. Its use may also be considered where it is
 essential to maintain separate instances, such as in multithreaded applications.
 
-## SOLID Principals
+## SOLID Principles
 
 The SOLID principles are:
 - Single Responsibility Principle
