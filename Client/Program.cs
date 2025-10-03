@@ -51,8 +51,6 @@ public class Program
         TestMediatorPattern();
         TestChainOfCommandPattern();
         TestMementoPattern();
-
-        Console.ReadKey();
     }
 
     private static void TestAbstractFactoryPattern()
@@ -88,7 +86,6 @@ public class Program
         foreach (var document in documents)
         {
             Console.WriteLine($"{document}:");
-            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             document.CreatePages();
 
             foreach (var page in document.Pages)
