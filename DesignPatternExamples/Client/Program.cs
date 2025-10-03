@@ -34,7 +34,7 @@ public class Program
         TestPrototypePattern();
         TestSingletonPattern();
 
-        TestAdapterPatten();
+        TestAdapterPattern();
         TestBridgePattern();
         TestCompositePattern();
         TestDecoratorPattern();
@@ -227,7 +227,6 @@ public class Program
 
         ibm.Price = 121.6;
         ibm.Price = 120.1;
-
     }
 
     private static void TestIteratorPattern()
@@ -277,7 +276,7 @@ public class Program
         products.Run(5);
     }
 
-    private static void TestAdapterPatten()
+    private static void TestAdapterPattern()
     {
         static void display(Compound c) => Console.WriteLine(c.ToString());
         var unknown = new Compound();
@@ -336,12 +335,12 @@ public class Program
         chatroom.RegisterRange([jim, sam, steve, sally, julia]);
         chatroom.Register(jim);
         
-        jim.Send("Sam", "you smell");
-        sam.Send("Jim", "you suck");
-        jim.Send("Sam", "beat it, chump");
-        sally.Send("Julia", "lol look at this");
-        julia.Send("Viktor", "you vic you here?");
-        steve.Send("Julia", "He's not in this group Julia");
+        jim.Send("Sam", "Hi Sam");
+        sam.Send("Jim", "Hi Jim");
+        jim.Send("Sam", "This thread needs to be locked");
+        sally.Send("Sam", "Wait, why?");
+        steve.Send("Viktor", "Check this out");
+        julia.Send("Steve", "He's not in this group, Steve");
     }
 
     private static void TestBridgePattern()
